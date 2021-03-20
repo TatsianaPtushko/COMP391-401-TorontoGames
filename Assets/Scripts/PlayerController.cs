@@ -6,6 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public Camera cam;
+    public GameObject bullet, BulletSpawn;
+    public float fireRate = 0.25f;
+    public float bulletSpeed = 10f;
+
+
+    private float timer;
 
     Vector2 mousePos;
 
@@ -19,21 +25,40 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horiz, vert;
-        //float rotation;
+       
 
-
+        // Player movement.
         horiz = Input.GetAxis("Horizontal");
         vert = Input.GetAxis("Vertical");
 
         Vector2 newVelocity = new Vector2(horiz, vert);
         GetComponent<Rigidbody2D>().velocity = newVelocity * speed;
 
+        //Check mouse position on the screen
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        //    //rotation = vert * rotationSpeed;
-        //    //transform.Rotate(Vector3.forward * rotation);
+        
+
+        // Check if Fire1 button is pressed
+
+        if (Input.GetAxis("Fire1") > 0 && timer > fireRate)
+        {
+            // What is I instantiate? Where? What is its rotation?
+            GameObject bulletObj;
+            bulletObj = GameObject.Instantiate(bullet, BulletSpawn.transform.position, BulletSpawn.transform.rotation);
+            
+            Rigidbody2D bulletRB = bulletObj.GetComponent<Rigidbody2D>();
+            bulletRB.AddForce(BulletSpawn.transform.right * bulletSpeed, ForceMode2D.Impulse);
+            
+            // reset timer
+            timer = 0;
+        }
+
+        timer += Time.deltaTime;
+
     }
 
 
+    // Player rotation following mouse
     void FixedUpdate()
     {
         Vector2 lookDirection = mousePos - GetComponent<Rigidbody2D>().position;

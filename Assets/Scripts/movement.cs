@@ -12,7 +12,7 @@ public class movement : MonoBehaviour
     public float speed = 5f;
     public float rotatespeed = 5f;
     // Update is called once per frame
-    
+
 
 
     void Update()
@@ -42,10 +42,10 @@ public class movement : MonoBehaviour
         }
         transform.localScale = characterScale;
 
-        void Rotation() 
-        { 
-        float rotation = vert * rotatespeed;
-        transform.Rotate(Vector3.forward * rotation);  
+        void Rotation()
+        {
+            float rotation = vert * rotatespeed;
+            transform.Rotate(Vector3.forward * rotation);
         }
     }
 }
