@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         Vector2 lookDirection = mousePos - GetComponent<Rigidbody2D>().position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
         GetComponent<Rigidbody2D>().rotation = angle;
+        lookDirection.Normalize();
 
     }
 
