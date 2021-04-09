@@ -19,24 +19,27 @@ public class ExplodeByContact : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
 
         //something collide
 
-        int n = 0;
-        // create explosion;
-        while (n < 5)
-        {
-            Instantiate(explosion, transform.position, transform.rotation);
-            n++;
+       
+        if (other.name != "Player" || other.name == "soldier")
+                { 
+                int n = 0;
+                // create explosion;
+                while (n < 5)
+                {
+                    Instantiate(explosion, transform.position, transform.rotation);
+                    n++;
+                }
+                // delete other object
+                Destroy(other.gameObject);
+                Instantiate(emptyPlant, transform.position, transform.rotation);
+                //delete object itself and all its scripts. The last action
+                Destroy(this.gameObject);
         }
-        // delete other object
-        Destroy(other.gameObject);
-        Instantiate(emptyPlant, transform.position, transform.rotation);
-        //delete object itself and all its scripts. The last action
-        Destroy(this.gameObject);
-
 
     }
 
