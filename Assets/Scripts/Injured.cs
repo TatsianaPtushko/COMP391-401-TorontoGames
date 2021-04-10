@@ -40,31 +40,43 @@ public class Injured : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.CompareTag("Bullet"))
-        {
-            
-            Destroy(other.gameObject);
-            Instantiate(Damaged, transform.position, transform.rotation);
-            
+        if (other.CompareTag("Helicopter"))
+        { Flight();
+            gameControllerScript.Win();
         }
-
-        gameControllerScript.DecreaseHealth(minusHealth);
-        ++i;
-
-        if (i == health)
+        else
         {
-            
-                    Destroy(other.gameObject);
-                    Instantiate(Died, transform.position, transform.rotation);
-                   gameControllerScript.GameOver();
-            Destroy(this.gameObject);
-                    
+            if (other.CompareTag("Bullet"))
+            {
+
+                Destroy(other.gameObject);
+                Instantiate(Damaged, transform.position, transform.rotation);
+
+            }
+
+            gameControllerScript.DecreaseHealth(minusHealth);
+            ++i;
+
+            if (i == health)
+            {
+
+                Destroy(other.gameObject);
+                Instantiate(Died, transform.position, transform.rotation);
+                gameControllerScript.GameOver();
+                Destroy(this.gameObject);
+
+
+            }
+
 
         }
-    } 
+    }
 
-       
+    void Flight()
+    {
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(4.0f, 2.0f) * 1.0f;
+    }
 }
 
   

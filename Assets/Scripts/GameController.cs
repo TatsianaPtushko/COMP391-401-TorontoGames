@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 
     private bool gameOver = false;
     private bool restart = false;
+    private bool win = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,13 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         gameOverTextObj.SetActive(true);
+    }
+
+
+    public void Win()
+    {
+        win = true;
+        winText.SetActive(true);
     }
 
 
