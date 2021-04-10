@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6753ec7c01d0de34893df82418a594b7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 200
+  forceTextureCase: 0
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Examples of erosion
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 143f79ae93f83ef42b106aee1f979be7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 1
+  ascentCalculationMode: 0
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
